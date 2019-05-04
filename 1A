@@ -20,3 +20,28 @@ def url_to_image(url):
   from google.colab.patches import cv2_imshow
 cv2_imshow(image)
 
+edges = cv2.Canny(image,100,200)
+
+cv2_imshow(edges)
+
+#BLUR
+#kernel = np.ones((3,3),np.float32)/25
+kernel = np.float32([[-1,1,-1],[0,0,0],[1,-1,1]])
+
+dst = cv2.filter2D(image,-1,kernel)
+cv2_imshow(dst)
+
+
+#verticaldetector
+kernel = np.float32([[1,0,-1],[-1,0,1],[1,0,-1]])
+
+dst = cv2.filter2D(image,-1,kernel)
+cv2_imshow(dst)
+
+#45degreeedgedetector
+kernel = np.float32([[-1,-1,2],[-1,2,-1],[2,-1,-1]])
+
+dst = cv2.filter2D(image,-1,kernel)
+cv2_imshow(dst)
+
+
